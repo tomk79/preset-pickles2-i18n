@@ -13,7 +13,7 @@ return call_user_func( function(){
 	// project
 
 	/** サイト名 */
-	$conf->name = 'Get start "Pickles 2" !';
+	$conf->name = 'Internationalization Sample on Pickles 2';
 
 	/** コピーライト表記 */
 	$conf->copyright = 'Pickles Project';
