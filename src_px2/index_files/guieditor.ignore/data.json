@@ -114,6 +114,19 @@
                                                                 "main": {
                                                                     "src": "### サイトマップを編集します\n\nはじめに、サイト全体の構造をサイトマップに登録します。1行が1ページで表現されるCSV形式のファイルです。\n\nサイトマップCSVは次のパスに置かれています。\n\n```\n./px-files/sitemaps/\n```\n",
                                                                     "editor": "markdown"
+                                                                },
+                                                                "paragraph": {
+                                                                    "src": "px2-p"
+                                                                },
+                                                                "text-align": {
+                                                                    "src": ""
+                                                                },
+                                                                "font-size": {
+                                                                    "src": ""
+                                                                },
+                                                                "main_en": {
+                                                                    "src": "### Edit Sitemap\n\nFirst, we will register the entire site structure in a sitemap, which is a CSV file where each line is represented by a page.\n\nThe sitemap CSV is located in the following path.\n\n```\n./px-files/sitemaps/\n```\n",
+                                                                    "editor": "markdown"
                                                                 }
                                                             },
                                                             "anchor": "",

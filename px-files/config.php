@@ -264,7 +264,27 @@ return call_user_func( function(){
 		'picklesFramework2\commands\api::register' ,
 
 		// PX=publish (px2-publish-ex)
-		'tomk79\pickles2\publishEx\publish::register' ,
+		'tomk79\pickles2\publishEx\publish::register('.json_encode(array(
+			'devices'=>array(
+				array(
+					'user_agent'=>'Mozilla/en',
+					'path_publish_dir'=>'../dist/',
+					'path_rewrite_rule'=>'/en{$dirname}/{$filename}.{$ext}',
+					'paths_target'=>array(
+						'/*',
+					),
+					'paths_ignore'=>array(
+						// '/common/*',
+					),
+
+					// リンクの書き換え方向
+					// `origin2origin`、`origin2rewrited`、`rewrited2origin`、`rewrited2rewrited` のいずれかで指定します。
+					// `origin` は変換前のパス、 `rewrited` は変換後のパスを意味します。
+					// 変換前のパスから変換後のパスへのリンクとして書き換える場合は `origin2rewrited` のように指定します。
+					'rewrite_direction'=>'rewrited2rewrited',
+				),
+			)
+		)).')' ,
 
 		// PX=px2dthelper
 		'tomk79\pickles2\px2dthelper\main::register' ,

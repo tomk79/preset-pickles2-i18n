@@ -3,5 +3,30 @@
     or _ENV.vars["font-size"]
     or _ENV.vars.paragraph
 %} class="{% if _ENV.vars.paragraph %}{{ paragraph }}{% endif %}{% if _ENV.vars["font-size"] %} px2-font-size-{{ _ENV.vars["font-size"] }}{% endif %}{% if _ENV.vars["text-align"] %} px2-text-align-{{ _context["text-align"] }}{% endif %}"{% endif %}>
+{% if _ENV.mode == 'canvas' %}
 {{ main }}
+{% else %}
+
+<?php
+
+$tmp_i18n_contents = array();
+ob_start();
+?>{{ main_en }}<?php
+$tmp_i18n_contents['en'] = ob_get_clean();
+
+ob_start();
+?>{{ main }}<?php
+$tmp_default_contents = ob_get_clean();
+
+if( preg_match('/^Mozilla\/en\//', $_SERVER['HTTP_USER_AGENT']) && strlen($tmp_i18n_contents['en']) ) {
+    echo $tmp_i18n_contents['en'];
+}else{
+    echo $tmp_default_contents;
+}
+
+unset($tmp_i18n_contents);
+unset($tmp_default_contents);
+?>
+
+{% endif %}
 </div>

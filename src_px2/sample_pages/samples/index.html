@@ -1,6 +1,27 @@
 <div class="px2-p">
-<p>このカテゴリでは、Pickles 2 が持っている様々な機能の一部をサンプルとして実装しています。</p>
+
+<?php
+
+$tmp_i18n_contents = array();
+ob_start();
+?><?php
+$tmp_i18n_contents['en'] = ob_get_clean();
+
+ob_start();
+?><p>このカテゴリでは、Pickles 2 が持っている様々な機能の一部をサンプルとして実装しています。</p>
 <p>ここで紹介できること以外にも、まだまだ機能やプラグインがたくさんあります。
 これらを参考に、よりよいサイト制作環境を構築してみてください。</p>
+<?php
+$tmp_default_contents = ob_get_clean();
+
+if( preg_match('/^Mozilla\/en\//', $_SERVER['HTTP_USER_AGENT']) && strlen($tmp_i18n_contents['en']) ) {
+    echo $tmp_i18n_contents['en'];
+}else{
+    echo $tmp_default_contents;
+}
+
+unset($tmp_i18n_contents);
+unset($tmp_default_contents);
+?>
 
 </div>

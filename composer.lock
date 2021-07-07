@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "028fa8c3bdd26800c1f3fdd610e36164",
+    "content-hash": "78beee26e5c539350b3444c7c3456a59",
     "packages": [
         {
             "name": "broccoli-html-editor/broccoli-field-table",
