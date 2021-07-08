@@ -8,7 +8,8 @@
 
 $tmp_i18n_contents = array();
 ob_start();
-?><?php
+?><h2>Welcome to the world of Pickles 2!</h2>
+<?php
 $tmp_i18n_contents['en'] = ob_get_clean();
 
 ob_start();
@@ -38,7 +39,8 @@ unset($tmp_default_contents);
 
 $tmp_i18n_contents = array();
 ob_start();
-?><?php
+?><h2>Next step</h2>
+<?php
 $tmp_i18n_contents['en'] = ob_get_clean();
 
 ob_start();
@@ -101,7 +103,12 @@ unset($tmp_default_contents);
 
 $tmp_i18n_contents = array();
 ob_start();
-?><?php
+?><h3>Edit the theme</h3>
+<p>A theme is a PHP template that generates HTML source outside the content area.</p>
+<p>It is located in the following path.</p>
+<pre><code>./px-files/themes/
+</code></pre>
+<?php
 $tmp_i18n_contents['en'] = ob_get_clean();
 
 ob_start();
@@ -132,7 +139,12 @@ unset($tmp_default_contents);
 
 $tmp_i18n_contents = array();
 ob_start();
-?><?php
+?><h3>Edit the content</h3>
+<p>Content is a simple HTML file that contains only the source of the content area.<br />
+Create an HTML file in the path registered in the path field of the site map.<br /></p>
+<p>You can see the source of this page you are looking at by opening <code>/index.html</code> in a text editor. <br />
+Please delete or overwrite this page as well to replace it with the top page of your site. <br /></p>
+<?php
 $tmp_i18n_contents['en'] = ob_get_clean();
 
 ob_start();
@@ -164,7 +176,15 @@ unset($tmp_default_contents);
 
 $tmp_i18n_contents = array();
 ob_start();
-?><?php
+?><h3>Publish</h3>
+<p>Once your site is complete, you can export it to static HTML as is.<br />
+Publish with the following command:</p>
+<pre><code>$ php ./.px_execute.php /?PX=publish.run
+</code></pre>
+<p>After a while, a static HTML file will be generated in the next path.</p>
+<pre><code>./px-files/dist/
+</code></pre>
+<?php
 $tmp_i18n_contents['en'] = ob_get_clean();
 
 ob_start();

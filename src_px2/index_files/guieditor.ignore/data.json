@@ -57,6 +57,19 @@
                                                     "main": {
                                                         "src": "## ようこそ、 Pickles 2 の世界へ！",
                                                         "editor": "markdown"
+                                                    },
+                                                    "paragraph": {
+                                                        "src": "px2-p"
+                                                    },
+                                                    "text-align": {
+                                                        "src": ""
+                                                    },
+                                                    "font-size": {
+                                                        "src": ""
+                                                    },
+                                                    "main_en": {
+                                                        "src": "## Welcome to the world of Pickles 2!",
+                                                        "editor": "markdown"
                                                     }
                                                 },
                                                 "anchor": "",
@@ -93,6 +106,19 @@
                                     "fields": {
                                         "main": {
                                             "src": "## 次のステップ",
+                                            "editor": "markdown"
+                                        },
+                                        "paragraph": {
+                                            "src": "px2-p"
+                                        },
+                                        "text-align": {
+                                            "src": ""
+                                        },
+                                        "font-size": {
+                                            "src": ""
+                                        },
+                                        "main_en": {
+                                            "src": "## Next step",
                                             "editor": "markdown"
                                         }
                                     },
@@ -149,6 +175,19 @@
                                                                 "main": {
                                                                     "src": "### テーマを編集します\n\nテーマは、コンテンツエリア以外のHTMLソースを生成するPHPテンプレートです。\n\n次のパスに置かれています。\n\n```\n./px-files/themes/\n```\n",
                                                                     "editor": "markdown"
+                                                                },
+                                                                "paragraph": {
+                                                                    "src": "px2-p"
+                                                                },
+                                                                "text-align": {
+                                                                    "src": ""
+                                                                },
+                                                                "font-size": {
+                                                                    "src": ""
+                                                                },
+                                                                "main_en": {
+                                                                    "src": "### Edit the theme\n\nA theme is a PHP template that generates HTML source outside the content area.\n\nIt is located in the following path.\n\n```\n./px-files/themes/\n```\n",
+                                                                    "editor": "markdown"
                                                                 }
                                                             },
                                                             "anchor": "",
@@ -171,6 +210,19 @@
                                                                 "main": {
                                                                     "src": "### コンテンツを編集します\n\nコンテンツは、コンテンツエリアのソースだけが記述されたシンプルなHTMLファイルです。<br />\nサイトマップの path 欄に登録したパスにHTMLファイルを作成してください。<br />\n\nあなたがいま見ているこのページは、テキストエディタで `/index.html` を開くとソースを確認できます。<br />\nこのページも、削除や上書きしてあなたのサイトのトップページに置き換えてください。<br />\n",
                                                                     "editor": "markdown"
+                                                                },
+                                                                "paragraph": {
+                                                                    "src": "px2-p"
+                                                                },
+                                                                "text-align": {
+                                                                    "src": ""
+                                                                },
+                                                                "font-size": {
+                                                                    "src": ""
+                                                                },
+                                                                "main_en": {
+                                                                    "src": "### Edit the content\n\nContent is a simple HTML file that contains only the source of the content area.<br />\nCreate an HTML file in the path registered in the path field of the site map.<br />\n\nYou can see the source of this page you are looking at by opening `/index.html` in a text editor. <br />\nPlease delete or overwrite this page as well to replace it with the top page of your site. <br />\n",
+                                                                    "editor": "markdown"
                                                                 }
                                                             },
                                                             "anchor": "",
@@ -190,6 +242,19 @@
                                     "fields": {
                                         "main": {
                                             "src": "### パブリッシュします\n\nサイトができあがったら、そのまま静的なHTMLに書き出すことができます。<br />\n次のコマンドで、パブリッシュを実行します。\n\n```\n$ php ./.px_execute.php /?PX=publish.run\n```\n\nしばらくすると、次のパスに、静的なHTMLファイルが生成されます。\n\n```\n./px-files/dist/\n```\n",
+                                            "editor": "markdown"
+                                        },
+                                        "paragraph": {
+                                            "src": "px2-p"
+                                        },
+                                        "text-align": {
+                                            "src": ""
+                                        },
+                                        "font-size": {
+                                            "src": ""
+                                        },
+                                        "main_en": {
+                                            "src": "### Publish\n\nOnce your site is complete, you can export it to static HTML as is.<br />\nPublish with the following command:\n\n```\n$ php ./.px_execute.php /?PX=publish.run\n```\n\nAfter a while, a static HTML file will be generated in the next path.\n\n```\n./px-files/dist/\n```\n",
                                             "editor": "markdown"
                                         }
                                     },
