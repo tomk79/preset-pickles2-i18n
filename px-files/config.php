@@ -464,6 +464,26 @@ return call_user_func( function(){
 	/** GUI編集リソース出力先ディレクトリ */
 	// $conf->plugins->px2dt->guieditor->path_resource_dir = '{$dirname}/{$filename}_files/resources/';
 
+	/** カスタムフィールドを登録 */
+	@$conf->plugins->px2dt->guieditor->custom_fields = array(
+		'multitext'=>array(
+			'backend'=>array(
+				'class' => 'broccoliHtmlEditor\\broccoliFieldSummernote\\summernote',
+				'require' => '../px-files/fields/multilang_summernote/backend/summernote.js',
+			),
+			'frontend'=>array(
+				'dir' => '../px-files/fields/multilang_summernote/',
+				'file' => array(
+					'summernote.css',
+					'summernote.js',
+					"summernote/summernote.min.css",
+					"summernote/summernote.min.js",
+				),
+				'function' => 'window.BroccoliFieldSummernote'
+			),
+		),
+	);
+
 	/** Broccoliフィールドの初期設定 */
 	$conf->plugins->px2dt->guieditor->field_config = array(
 

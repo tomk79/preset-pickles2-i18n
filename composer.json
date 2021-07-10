@@ -21,7 +21,9 @@
     },
     "require-dev": {},
     "autoload": {
-        "files": []
+        "files": [
+            "px-files/fields/multilang_summernote/backend/summernote.php"
+        ]
     },
     "extra": {
         "px2package": {
