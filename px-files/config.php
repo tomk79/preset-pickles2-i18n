@@ -252,6 +252,9 @@ return call_user_func( function(){
 				// 'no_convert'=>'pass',
 			),
 		)).')' ,
+
+		// カスタムサイトマップオブジェクトを生成して登録する
+		'proj\site::initialize()',
 	);
 
 	/**

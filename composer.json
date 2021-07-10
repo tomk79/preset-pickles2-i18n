@@ -1,4 +1,6 @@
 {
+    "name": "tomk79/preset-pickles2-i18n",
+    "description": "preset-pickles2-i18n",
     "keywords": [
         "pickles2"
     ],
@@ -22,6 +24,7 @@
     "require-dev": {},
     "autoload": {
         "files": [
+            "px-files/php/site.php",
             "px-files/fields/multilang_summernote/backend/summernote.php"
         ]
     },
@@ -32,7 +35,5 @@
             "path": "src_px2/.px_execute.php",
             "path_homedir": "px-files/"
         }
-    },
-    "name": "tomk79/preset-pickles2-i18n",
-    "description": "preset-pickles2-i18n"
+    }
 }
