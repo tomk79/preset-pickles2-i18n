@@ -499,6 +499,13 @@ return call_user_func( function(){
 	/** Broccoliフィールドの初期設定 */
 	$conf->plugins->px2dt->guieditor->field_config = array(
 
+		// multitext フィールドを設定
+		'multitext' => array(
+			'subLangs' => array(
+				'en',
+			),
+		),
+
 		// image フィールドを設定
 		'image' => array(
 			'filenameAutoSetter' => 'random', // random = 画像ファイル名をランダムに自動命名する。
