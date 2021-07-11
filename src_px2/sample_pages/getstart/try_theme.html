@@ -17,7 +17,7 @@ ob_start();
 <?php
 $tmp_default_contents = ob_get_clean();
 
-if( preg_match('/^Mozilla\/en\//', $_SERVER['HTTP_USER_AGENT']) && strlen($tmp_i18n_contents['en']) ) {
+if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
     echo $tmp_i18n_contents['en'];
 }else{
     echo $tmp_default_contents;

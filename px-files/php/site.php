@@ -63,8 +63,10 @@ class site extends \picklesFramework2\site{
 							case 'title_h1':
 							case 'title_label':
 							case 'title_breadcrumb':
-							case 'title_full':
 								$page_info[$key] = $title_lang;
+								break;
+							case 'title_full':
+								$page_info[$key] = $title_lang.' | '.$this->px->conf()->name;
 								break;
 						}
 					}
@@ -87,8 +89,10 @@ class site extends \picklesFramework2\site{
 					case 'title_h1':
 					case 'title_label':
 					case 'title_breadcrumb':
-					case 'title_full':
 						return $title_lang;
+						break;
+					case 'title_full':
+						return $title_lang.' | '.$this->px->conf()->name;
 						break;
 				}
 			}

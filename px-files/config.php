@@ -277,6 +277,9 @@ return call_user_func( function(){
 			'devices'=>array(
 				array(
 					'user_agent'=>'Mozilla/en',
+					'params' => array(
+						'LANG' => 'en',
+					),
 					'path_publish_dir'=>'../dist/',
 					'path_rewrite_rule'=>'/en{$dirname}/{$filename}.{$ext}',
 					'paths_target'=>array(
