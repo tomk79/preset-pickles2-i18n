@@ -1,3 +1,9 @@
+/*
+
+TODO: NodeJS版は未実装です。
+PHP版の実装を参考に移植してください。
+
+*/
 module.exports = function(broccoli){
 	var utils79 = require('utils79');
 

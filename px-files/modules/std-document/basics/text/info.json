@@ -76,11 +76,6 @@
                     }
                 ],
                 "default": ""
-            },
-            "main_en": {
-                "fieldType": "input",
-                "type": "multitext",
-                "label": "テキスト (en)"
             }
         }
     }

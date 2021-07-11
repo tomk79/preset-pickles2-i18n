@@ -1,30 +1,9 @@
 <div class="px2-p">
-
-<?php
-
-$tmp_i18n_contents = array();
-ob_start();
-?><?php
-$tmp_i18n_contents['en'] = ob_get_clean();
-
-ob_start();
-?><h2>テーマはどこにあるか？</h2>
+<h2>テーマはどこにあるか？</h2>
 <p>テーマは、次のフォルダに格納されています。</p>
 <ul>
 <li><code>./px-files/themes/{$theme_id}/*</code></li>
 </ul>
 <p>このフォルダには、テンプレートとなるHTMLファイルが置かれています。</p>
-<?php
-$tmp_default_contents = ob_get_clean();
-
-if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
-    echo $tmp_i18n_contents['en'];
-}else{
-    echo $tmp_default_contents;
-}
-
-unset($tmp_i18n_contents);
-unset($tmp_default_contents);
-?>
 
 </div>

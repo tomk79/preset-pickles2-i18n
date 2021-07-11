@@ -1,28 +1,7 @@
 <div class="px2-p">
-
-<?php
-
-$tmp_i18n_contents = array();
-ob_start();
-?><?php
-$tmp_i18n_contents['en'] = ob_get_clean();
-
-ob_start();
-?><p>このページは、 エイリアス機能 (<code>alias</code>) のサンプルページです。</p>
+<p>このページは、 エイリアス機能 (<code>alias</code>) のサンプルページです。</p>
 <p>親ページに当たる "エイリアス機能" は、実体となるURLを持っていませんが、パンくず階層構造上には確かに存在します。</p>
 <p>ナビゲーションから、 "エイリアス機能" ページをクリックすると、いまご覧になっているこのページ "エイリアスの実体ページ" へ遷移します。</p>
 <p>ページ "エイリアス機能" は、この "エイリアスの実体ページ" へのエイリアスです。</p>
-<?php
-$tmp_default_contents = ob_get_clean();
-
-if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
-    echo $tmp_i18n_contents['en'];
-}else{
-    echo $tmp_default_contents;
-}
-
-unset($tmp_i18n_contents);
-unset($tmp_default_contents);
-?>
 
 </div>

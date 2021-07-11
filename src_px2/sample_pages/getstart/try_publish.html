@@ -1,57 +1,15 @@
 <div class="px2-p">
-
-<?php
-
-$tmp_i18n_contents = array();
-ob_start();
-?><?php
-$tmp_i18n_contents['en'] = ob_get_clean();
-
-ob_start();
-?><p>サイトマップ、テーマ、コンテンツの制作ができたら、最後の仕上げ "パブリッシュ" を実行します。</p>
+<p>サイトマップ、テーマ、コンテンツの制作ができたら、最後の仕上げ "パブリッシュ" を実行します。</p>
 <p>パブリッシュは、部品ごとにバラバラに作られたサイトを統合し、静的なHTMLファイル群を生成します。</p>
-<?php
-$tmp_default_contents = ob_get_clean();
-
-if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
-    echo $tmp_i18n_contents['en'];
-}else{
-    echo $tmp_default_contents;
-}
-
-unset($tmp_i18n_contents);
-unset($tmp_default_contents);
-?>
 
 </div>
 <div class="px2-p">
-
-<?php
-
-$tmp_i18n_contents = array();
-ob_start();
-?><?php
-$tmp_i18n_contents['en'] = ob_get_clean();
-
-ob_start();
-?><p>次のコマンドで、パブリッシュを実行します。</p>
+<p>次のコマンドで、パブリッシュを実行します。</p>
 <pre><code>$ php ./.px_execute.php /?PX=publish.run
 </code></pre>
 <p>しばらくすると、次のパスに、静的なHTMLファイルが生成されます。</p>
 <ul>
 <li><code>./px-files/dist/</code></li>
 </ul>
-<?php
-$tmp_default_contents = ob_get_clean();
-
-if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
-    echo $tmp_i18n_contents['en'];
-}else{
-    echo $tmp_default_contents;
-}
-
-unset($tmp_i18n_contents);
-unset($tmp_default_contents);
-?>
 
 </div>

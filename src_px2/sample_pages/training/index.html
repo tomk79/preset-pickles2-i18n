@@ -1,27 +1,6 @@
 <div class="px2-p">
-
-<?php
-
-$tmp_i18n_contents = array();
-ob_start();
-?><?php
-$tmp_i18n_contents['en'] = ob_get_clean();
-
-ob_start();
-?><p>このカテゴリには、いくつかの練習ページが用意されています。</p>
+<p>このカテゴリには、いくつかの練習ページが用意されています。</p>
 <p>これらのページは、まだコンテンツが作られていません。 コンテンツファイルが存在しないページにアクセスすると、<q>404 - File not found.</q> のような文言が表示されるはずです。</p>
 <p>新しくコンテンツファイルを作成して、ページを完成させてください。</p>
-<?php
-$tmp_default_contents = ob_get_clean();
-
-if( isset($tmp_i18n_contents[$px->lang()]) && strlen($tmp_i18n_contents[$px->lang()]) ) {
-    echo $tmp_i18n_contents['en'];
-}else{
-    echo $tmp_default_contents;
-}
-
-unset($tmp_i18n_contents);
-unset($tmp_default_contents);
-?>
 
 </div>
