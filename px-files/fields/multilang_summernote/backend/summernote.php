@@ -69,7 +69,7 @@ class summernote extends \broccoliHtmlEditor\fieldBase{
 			}else{
 				$rtn .= '<?php ';
 			}
-			$rtn .= 'if( $px->lang() == '.var_export($lang, true).' && '.var_export(strlen($langSrc), true).' ){ ?>';
+			$rtn .= 'if( $px->lang() == '.var_export($lang, true).' && '.var_export(strlen($langSrc), true).' && '.var_export($langSrc!='<p><br></p>', true).' ){ ?>';
 			$rtn .= $langSrc;
 		}
 		if( strlen($rtn) ){

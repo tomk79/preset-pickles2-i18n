@@ -22,7 +22,7 @@ return call_user_func( function(){
 	$conf->default_lang = 'ja';
 
 	/** 対応する言語 */
-	$conf->accept_langs = array('en');
+	$conf->accept_langs = array('en', 'zh-CN', 'zh-TW', 'ko');
 
 	/**
 	 * スキーマ
@@ -263,6 +263,30 @@ return call_user_func( function(){
 		'proj\site::initialize()',
 	);
 
+	$devices = array();
+	foreach( $conf->accept_langs as $langCode ){
+		array_push( $devices, array(
+			'user_agent'=>'Mozilla/',$langCode,
+			'params' => array(
+				'LANG' => $langCode,
+			),
+			'path_publish_dir'=>'../dist/',
+			'path_rewrite_rule'=>'/'.$langCode.'{$dirname}/{$filename}.{$ext}',
+			'paths_target'=>array(
+				'/*',
+			),
+			'paths_ignore'=>array(
+				// '/common/*',
+			),
+
+			// リンクの書き換え方向
+			// `origin2origin`、`origin2rewrited`、`rewrited2origin`、`rewrited2rewrited` のいずれかで指定します。
+			// `origin` は変換前のパス、 `rewrited` は変換後のパスを意味します。
+			// 変換前のパスから変換後のパスへのリンクとして書き換える場合は `origin2rewrited` のように指定します。
+			'rewrite_direction'=>'rewrited2rewrited',
+		) );
+	}
+
 	/**
 	 * funcs: Before content
 	 *
@@ -274,28 +298,7 @@ return call_user_func( function(){
 
 		// PX=publish (px2-publish-ex)
 		'tomk79\pickles2\publishEx\publish::register('.json_encode(array(
-			'devices'=>array(
-				array(
-					'user_agent'=>'Mozilla/en',
-					'params' => array(
-						'LANG' => 'en',
-					),
-					'path_publish_dir'=>'../dist/',
-					'path_rewrite_rule'=>'/en{$dirname}/{$filename}.{$ext}',
-					'paths_target'=>array(
-						'/*',
-					),
-					'paths_ignore'=>array(
-						// '/common/*',
-					),
-
-					// リンクの書き換え方向
-					// `origin2origin`、`origin2rewrited`、`rewrited2origin`、`rewrited2rewrited` のいずれかで指定します。
-					// `origin` は変換前のパス、 `rewrited` は変換後のパスを意味します。
-					// 変換前のパスから変換後のパスへのリンクとして書き換える場合は `origin2rewrited` のように指定します。
-					'rewrite_direction'=>'rewrited2rewrited',
-				),
-			)
+			'devices'=>$devices,
 		)).')' ,
 
 		// PX=px2dthelper
@@ -515,16 +518,12 @@ return call_user_func( function(){
 
 		// multitext フィールドを設定
 		'multitext' => array(
-			'subLangs' => array(
-				'en',
-			),
+			'subLangs' => $conf->accept_langs,
 		),
 
 		// text フィールドを設定
 		'text' => array(
-			'subLangs' => array(
-				'en',
-			),
+			'subLangs' => $conf->accept_langs,
 		),
 
 		// image フィールドを設定

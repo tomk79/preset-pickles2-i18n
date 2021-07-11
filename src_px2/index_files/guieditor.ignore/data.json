@@ -109,13 +109,19 @@
                                         "main": {
                                             "src": "次のステップ",
                                             "langs": {
-                                                "en": "Next Step"
+                                                "en": "Next Step",
+                                                "zh-CN": "下一步",
+                                                "zh-TW": "下一步",
+                                                "ko": "다음 단계"
                                             }
                                         },
                                         "sub": {
                                             "src": "",
                                             "langs": {
-                                                "en": ""
+                                                "en": "",
+                                                "zh-CN": "",
+                                                "zh-TW": "",
+                                                "ko": ""
                                             }
                                         }
                                     },
@@ -138,7 +144,10 @@
                                                                     "src": "<h3>サイトマップを編集します</h3>\n<p>はじめに、サイト全体の構造をサイトマップに登録します。1行が1ページで表現されるCSV形式のファイルです。</p>\n<p>サイトマップCSVは次のパスに置かれています。</p>\n<pre><code>./px-files/sitemaps/\n</code></pre>\n",
                                                                     "editor": "",
                                                                     "langs": {
-                                                                        "en": "<h3>Edit Sitemap</h3><p>First, we will register the entire site structure in a sitemap, which is a CSV file where each line is represented by a page.</p><p>The sitemap CSV is located in the following path.</p><pre style=\"line-height: 1.42857; font-weight: 400;\"><code>./px-files/sitemaps/</code></pre>"
+                                                                        "en": "<h3>Edit Sitemap</h3><p>First, we will register the entire site structure in a sitemap, which is a CSV file where each line is represented by a page.</p><p>The sitemap CSV is located in the following path.</p><pre style=\"line-height: 1.42857; font-weight: 400;\"><code>./px-files/sitemaps/</code></pre>",
+                                                                        "zh-CN": "",
+                                                                        "zh-TW": "",
+                                                                        "ko": "<h3>사이트 맵을 편집합니다</h3><p>소개 사이트 전체 구조를 사이트 맵에 등록합니다. 1 행이 한 페이지에 표현되는 CSV 형식의 파일입니다.</p><p>사이트 맵 CSV는 다음 경로에 있습니다.<br></p><pre><code>./px-files/sitemaps/</code></pre>"
                                                                     }
                                                                 },
                                                                 "paragraph": {

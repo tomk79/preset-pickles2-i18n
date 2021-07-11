@@ -74,7 +74,7 @@ window.BroccoliFieldMultilangText = function(broccoli){
 			data.langs = {};
 		}
 
-		function mkSummernoteField(elm, src, lang){
+		function mkInputField(elm, src, lang){
 			var $div = $('<div>');
 			$(elm).html($div);
 
@@ -82,7 +82,7 @@ window.BroccoliFieldMultilangText = function(broccoli){
 
 			if( lang ){
 				fieldName += '--'+lang;
-				$div.append('<p>'+lang+'</p>');
+				$div.append($('<p>').text(lang).css({'font-weight':'bold'}));
 			}
 
 
@@ -119,18 +119,49 @@ window.BroccoliFieldMultilangText = function(broccoli){
 			'data-lang': 'editor-default-lang',
 		});
 		$(elm).append($elm);
-		mkSummernoteField($elm, data.src);
+		mkInputField($elm, data.src);
 
 		// 副言語
 		if( mod.subLangs && mod.subLangs.length ){
+
+			var $selectLang = $('<select>');
+			$(elm).append($selectLang);
+			$selectLang.append('<option value="">select language...</option>');
+
+			var $divSubLangs = $('<div class="broccoli-field-multilang-text-sublangs">');
+			$(elm).append($divSubLangs);
+
 			for(var idx = 0; idx < mod.subLangs.length; idx ++ ){
+				$selectLang.append($('<option>')
+					.attr({
+						"value": mod.subLangs[idx],
+					})
+					.text( mod.subLangs[idx] )
+				);
 				var $elm = $('<div>');
 				$elm.attr({
 					'data-lang': 'editor-lang-'+mod.subLangs[idx],
 				});
-				$(elm).append($elm);
-				mkSummernoteField($elm, data.langs[mod.subLangs[idx]], mod.subLangs[idx]);
+				$divSubLangs.append($elm);
+				mkInputField($elm, data.langs[mod.subLangs[idx]], mod.subLangs[idx]);
 			}
+
+			$selectLang.append('<option value="_all">all</option>');
+			$selectLang.on('change', function(){
+				var $this = $(this);
+				var selectedValue = $this.val();
+				if( selectedValue == '_all' ){
+					$divSubLangs.find( '[data-lang]' ).show();
+					return;
+				}
+				$divSubLangs.find( '[data-lang]' ).hide();
+				if( selectedValue == '' ){
+					return;
+				}
+				$divSubLangs.find( '[data-lang=editor-lang-'+selectedValue+']' ).show();
+
+			});
+			$divSubLangs.find( '[data-lang]' ).hide();
 		}
 
 
