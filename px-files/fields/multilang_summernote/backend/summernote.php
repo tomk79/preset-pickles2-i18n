@@ -1,5 +1,5 @@
 <?php
-namespace broccoliHtmlEditor\broccoliFieldSummernote;
+namespace proj\fields\multilangSummernote;
 class summernote extends \broccoliHtmlEditor\fieldBase{
 
     private $broccoli;

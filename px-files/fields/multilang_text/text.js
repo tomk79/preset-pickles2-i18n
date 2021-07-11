@@ -10882,7 +10882,7 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
-window.BroccoliFieldText = function(broccoli){
+window.BroccoliFieldMultilangText = function(broccoli){
 	var $ = require('jquery');
 
 	/**

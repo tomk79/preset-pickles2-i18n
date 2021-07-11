@@ -101,23 +101,22 @@
                             "fluid-innter": "",
                             "main": [
                                 {
-                                    "modId": "std-document:basics/text",
+                                    "modId": "std-document:headings/hx-simple",
                                     "fields": {
+                                        "hx": {
+                                            "src": "2"
+                                        },
                                         "main": {
-                                            "src": "<h2>次のステップ</h2>",
-                                            "editor": "",
+                                            "src": "次のステップ",
                                             "langs": {
-                                                "en": "<h2>Next Step</h2>"
+                                                "en": "Next Step"
                                             }
                                         },
-                                        "paragraph": {
-                                            "src": "px2-p"
-                                        },
-                                        "text-align": {
-                                            "src": ""
-                                        },
-                                        "font-size": {
-                                            "src": ""
+                                        "sub": {
+                                            "src": "",
+                                            "langs": {
+                                                "en": ""
+                                            }
                                         }
                                     },
                                     "anchor": "",

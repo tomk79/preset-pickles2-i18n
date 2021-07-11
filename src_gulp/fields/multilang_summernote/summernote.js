@@ -1,4 +1,4 @@
-window.BroccoliFieldSummernote = function(broccoli){
+window.BroccoliFieldMultilangSummernote = function(broccoli){
 	var $ = require('jquery');
 	var isGlobalJQuery = ( window.jQuery ? true : false );
 

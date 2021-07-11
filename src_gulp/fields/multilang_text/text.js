@@ -1,4 +1,4 @@
-window.BroccoliFieldText = function(broccoli){
+window.BroccoliFieldMultilangText = function(broccoli){
 	var $ = require('jquery');
 
 	/**

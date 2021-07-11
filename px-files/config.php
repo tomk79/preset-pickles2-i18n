@@ -480,7 +480,7 @@ return call_user_func( function(){
 	@$conf->plugins->px2dt->guieditor->custom_fields = array(
 		'text'=>array(
 			'backend'=>array(
-				'class' => 'broccoliHtmlEditor\\broccoliFieldText\\text',
+				'class' => 'proj\\fields\\multilangText\\text',
 				'require' => '../px-files/fields/multilang_text/backend/text.js',
 			),
 			'frontend'=>array(
@@ -489,12 +489,12 @@ return call_user_func( function(){
 					'text.css',
 					'text.js'
 				),
-				'function' => 'window.BroccoliFieldText'
+				'function' => 'window.BroccoliFieldMultilangText'
 			),
 		),
 		'multitext'=>array(
 			'backend'=>array(
-				'class' => 'broccoliHtmlEditor\\broccoliFieldSummernote\\summernote',
+				'class' => 'proj\\fields\\multilangSummernote\\summernote',
 				'require' => '../px-files/fields/multilang_summernote/backend/summernote.js',
 			),
 			'frontend'=>array(
@@ -505,7 +505,7 @@ return call_user_func( function(){
 					"summernote/summernote.min.css",
 					"summernote/summernote.min.js",
 				),
-				'function' => 'window.BroccoliFieldSummernote'
+				'function' => 'window.BroccoliFieldMultilangSummernote'
 			),
 		),
 	);
