@@ -38,7 +38,7 @@ class summernote extends \broccoliHtmlEditor\fieldBase{
 				}
 			}
 
-			if( isset($fieldData['langs']) && is_array($fieldData['langs']) ){
+			if( isset($fieldData['langs']) && is_array($fieldData['langs']) && isset($mod->subLangs) && is_array($mod->subLangs) ){
 				foreach( $mod->subLangs as $currentLang ){
 					$currentLangSrc = '';
 					if( isset($fieldData['langs'][$currentLang]) ){

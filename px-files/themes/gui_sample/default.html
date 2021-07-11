@@ -7,7 +7,8 @@
 		<meta name="keywords" content="<?= htmlspecialchars($px->site()->get_current_page_info('keywords')); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php include(__DIR__.'/inc/headsection.inc'); ?>
-<?= $px->bowl()->get_clean('head'); ?>
+<?= $px->bowl()->get_clean('head'); ?><script src="<?= htmlspecialchars( $theme->files('/layouts/default/script.js') ) ?>"></script>
+
 
 	</head>
 	<body>
@@ -15,7 +16,7 @@
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
 			<a href="<?= htmlspecialchars($px->href('/index.html')) ?>"><?= htmlspecialchars( $px->conf()->name ) ?></a>		</div>
-		<div class="theme-header__shouldernavi"><?php
+		<div class="theme-header__shouldernavi"><div class="theme-lang-selector" data-current-lang="<?= $px->lang() ?>" data-default-lang="<?= $px->conf()->default_lang ?>" data-accept-langs="<?= htmlspecialchars(json_encode( $px->conf()->accept_langs )) ?>"></div><?php
 	$shoulder_menu = $px->site()->get_shoulder_menu();
 	echo( '<ul>' );
 	foreach( $shoulder_menu as $page_id ){

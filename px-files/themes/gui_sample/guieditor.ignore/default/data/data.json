@@ -11,6 +11,23 @@
                             "sitetitle_htmlElement": "",
                             "shouldernavi": [
                                 {
+                                    "modId": "themeEditorModules:basics/multitext",
+                                    "fields": {
+                                        "main": {
+                                            "src": "<div class=\"theme-lang-selector\" data-current-lang=\"<?= $px->lang() ?>\" data-default-lang=\"<?= $px->conf()->default_lang ?>\" data-accept-langs=\"<?= htmlspecialchars(json_encode( $px->conf()->accept_langs )) ?>\"></div>",
+                                            "editor": "",
+                                            "langs": {
+                                                "en": "<p><br></p>",
+                                                "zh-CN": "<p><br></p>",
+                                                "zh-TW": "<p><br></p>",
+                                                "ko": "<p><br></p>"
+                                            }
+                                        }
+                                    },
+                                    "anchor": "",
+                                    "dec": ""
+                                },
+                                {
                                     "modId": "themeEditorModules:vars/shouldernavi",
                                     "fields": [],
                                     "anchor": "",
