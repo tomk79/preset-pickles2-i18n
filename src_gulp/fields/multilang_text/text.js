@@ -1,14 +1,5 @@
-window.BroccoliFieldSummernote = function(broccoli){
+window.BroccoliFieldText = function(broccoli){
 	var $ = require('jquery');
-	var isGlobalJQuery = ( window.jQuery ? true : false );
-
-	function htmlspecialchars(text){
-		text = text.split(/\&/g).join('&amp;');
-		text = text.split(/\</g).join('&lt;');
-		text = text.split(/\>/g).join('&gt;');
-		text = text.split(/\"/g).join('&quot;');
-		return text;
-	}
 
 	/**
 	 * データを正規化する (Client Side)
@@ -63,7 +54,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 		if(!data || typeof(data) != typeof({})){
 			data = {
 				src: '',
-				editor: '',
+				editor: 'text',
 				langs: {},
 			};
 		}
@@ -77,41 +68,11 @@ window.BroccoliFieldSummernote = function(broccoli){
 			data.src = '';
 		}
 		if(typeof(data.editor) != typeof('')){
-			data.editor = '';
+			data.editor = 'text';
 		}
 		if(typeof(data.langs) != typeof({})){
 			data.langs = {};
 		}
-
-		if( rows != 1 ){
-
-			switch( data.editor ){
-				case 'markdown':
-					var marked = require('marked');
-					marked.setOptions({
-						renderer: new marked.Renderer(),
-						gfm: true,
-						headerIds: false,
-						tables: true,
-						breaks: false,
-						pedantic: false,
-						sanitize: false,
-						smartLists: true,
-						smartypants: false,
-						xhtml: true
-					});
-					data.src = marked(data.src);
-					break;
-				case 'text':
-					// HTML特殊文字変換
-					data.src = htmlspecialchars(data.src);
-
-					// 改行コードは改行タグに変換
-					data.src = data.src.split(/\r\n|\r|\n/g).join('<br />');
-					break;
-			}
-		}
-
 
 		function mkSummernoteField(elm, src, lang){
 			var $div = $('<div>');
@@ -135,54 +96,20 @@ window.BroccoliFieldSummernote = function(broccoli){
 				;
 				$div.append( $formElm );
 
-				if( !lang ){
-					$div
-						.append( $('<p>')
-							.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(fieldName)+'" value="" /> HTML</label></span>'))
-							.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(fieldName)+'" value="text" /> テキスト</label></span>'))
-							.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(fieldName)+'" value="markdown" /> Markdown</label></span>'))
-						)
-					;
-					$div.find('input[type=radio][name=editor-'+fieldName+'][value="'+data.editor+'"]').attr({'checked':'checked'});
-				}
-
 			}else{
 
-				var $summernote = $('<div>');
-				$summernote.addClass('broccoli-field-summernote');
+				var $text = $('<div>');
+				$text.addClass('broccoli-field-text');
 				$div.append(
-					$summernote
+					$text
 				);
 
-				if( isGlobalJQuery ){
-					// jQuery がある場合
-					var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote').eq(0);
-					$targetElm.summernote({
-						// TODO: 隠蔽したい。
-						placeholder: '',
-						tabsize: 2,
-						height: 90 + (18 * rows),
-						toolbar: [
-							['style', ['style']],
-							['font', ['bold', 'underline', 'clear']],
-							['color', ['color']],
-							['para', ['ul', 'ol', 'paragraph']],
-							['table', ['table']],
-							['insert', ['link', 'picture', 'video']],
-							['view', ['fullscreen', 'codeview', 'help']]
-						]
-					});
-					$targetElm.summernote('code', src);
-				}else{
-					// jQuery がない場合
-					console.error('broccoli-field-summernoteフィールドで Summernote (WYSIWYG)を利用するには、グローバルスコープに jQuery がロードされている必要があります。');
-					$(elm).find('.broccoli-field-summernote').append( $('<textarea class="form-control">')
-						.val(src)
-						.attr({
-							"rows": rows
-						})
-					);
-				}
+				$(elm).find('.broccoli-field-text').append( $('<textarea class="form-control">')
+					.val(src)
+					.attr({
+						"rows": rows
+					})
+				);
 			}
 		}
 
@@ -253,20 +180,11 @@ window.BroccoliFieldSummernote = function(broccoli){
 			rtn.src = $elm.find('[data-lang=editor-default-lang] input[type=text]').eq(0).val();
 			rtn.editor = $elm.find('[data-lang=editor-default-lang] input[type=radio][name=editor-'+mod.name+']:checked').eq(0).val();
 
-		}else if( isGlobalJQuery ){
-			// jQuery がある場合
-
-			// デフォルト言語
-			var $targetElm = window.jQuery(elm).find('[data-lang=editor-default-lang] .broccoli-field-summernote').eq(0);
-				// TODO: 隠蔽したい。
-
-			rtn.src = $targetElm.summernote('code');
-
 		}else{
 			// jQuery がない場合
 
 			// デフォルト言語
-			rtn.src = $elm.find('[data-lang=editor-default-lang] .broccoli-field-summernote textarea').eq(0).val();
+			rtn.src = $elm.find('[data-lang=editor-default-lang] .broccoli-field-text textarea').eq(0).val();
 		}
 
 
@@ -279,20 +197,11 @@ window.BroccoliFieldSummernote = function(broccoli){
 					// 副言語
 					rtn.langs[currentLang] = $elm.find('[data-lang=editor-lang-'+currentLang+'] input[type=text]').eq(0).val();
 
-				}else if( isGlobalJQuery ){
-					// jQuery がある場合
-
-					// 副言語
-					var $targetElm = window.jQuery(elm).find('[data-lang=editor-lang-'+currentLang+'] .broccoli-field-summernote').eq(0);
-						// TODO: 隠蔽したい。
-
-					rtn.langs[currentLang] = $targetElm.summernote('code');
-
 				}else{
 					// jQuery がない場合
 
 					// 副言語
-					rtn.langs[currentLang] = $elm.find('[data-lang=editor-lang-'+currentLang+'] .broccoli-field-summernote textarea').eq(0).val();
+					rtn.langs[currentLang] = $elm.find('[data-lang=editor-lang-'+currentLang+'] .broccoli-field-text textarea').eq(0).val();
 				}
 			}
 		}

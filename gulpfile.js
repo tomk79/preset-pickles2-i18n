@@ -4,8 +4,8 @@ let concat  = require('gulp-concat');
 let browserify = require("gulp-browserify");//NodeJSのコードをブラウザ向けコードに変換
 
 
-// summernoteEditor フィールド を処理
-gulp.task('summernoteEditor:js', function(){
+// multilangSummernoteEditor フィールド を処理
+gulp.task('multilangSummernoteEditor:js', function(){
 	return gulp.src(["./src_gulp/fields/multilang_summernote/summernote.js"])
 		.pipe(plumber())
 		.pipe(browserify({}))
@@ -13,7 +13,7 @@ gulp.task('summernoteEditor:js', function(){
 		.pipe(gulp.dest( './px-files/fields/multilang_summernote/' ))
 	;
 });
-gulp.task('summernoteEditor:css', function(){
+gulp.task('multilangSummernoteEditor:css', function(){
 	return gulp.src(["./src_gulp/fields/multilang_summernote/summernote.css"])
 		.pipe(plumber())
 		.pipe(concat('summernote.css'))
@@ -22,9 +22,29 @@ gulp.task('summernoteEditor:css', function(){
 });
 
 
+// multilangText フィールド を処理
+gulp.task('multilangText:js', function(){
+	return gulp.src(["./src_gulp/fields/multilang_text/text.js"])
+		.pipe(plumber())
+		.pipe(browserify({}))
+		.pipe(concat('text.js'))
+		.pipe(gulp.dest( './px-files/fields/multilang_text/' ))
+	;
+});
+gulp.task('multilangText:css', function(){
+	return gulp.src(["./src_gulp/fields/multilang_text/text.css"])
+		.pipe(plumber())
+		.pipe(concat('text.css'))
+		.pipe(gulp.dest( './px-files/fields/multilang_text/' ))
+	;
+});
+
+
 let _tasks = gulp.parallel(
-	'summernoteEditor:js',
-	'summernoteEditor:css'
+	'multilangSummernoteEditor:js',
+	'multilangSummernoteEditor:css',
+	'multilangText:js',
+	'multilangText:css'
 );
 
 // src 中のすべての拡張子を監視して処理

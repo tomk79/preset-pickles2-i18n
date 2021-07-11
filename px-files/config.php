@@ -478,6 +478,20 @@ return call_user_func( function(){
 
 	/** カスタムフィールドを登録 */
 	@$conf->plugins->px2dt->guieditor->custom_fields = array(
+		'text'=>array(
+			'backend'=>array(
+				'class' => 'broccoliHtmlEditor\\broccoliFieldText\\text',
+				'require' => '../px-files/fields/multilang_text/backend/text.js',
+			),
+			'frontend'=>array(
+				'dir' => '../px-files/fields/multilang_text/',
+				'file' => array(
+					'text.css',
+					'text.js'
+				),
+				'function' => 'window.BroccoliFieldText'
+			),
+		),
 		'multitext'=>array(
 			'backend'=>array(
 				'class' => 'broccoliHtmlEditor\\broccoliFieldSummernote\\summernote',
@@ -501,6 +515,13 @@ return call_user_func( function(){
 
 		// multitext フィールドを設定
 		'multitext' => array(
+			'subLangs' => array(
+				'en',
+			),
+		),
+
+		// text フィールドを設定
+		'text' => array(
 			'subLangs' => array(
 				'en',
 			),

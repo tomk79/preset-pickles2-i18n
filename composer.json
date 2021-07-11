@@ -25,7 +25,8 @@
     "autoload": {
         "files": [
             "px-files/php/site.php",
-            "px-files/fields/multilang_summernote/backend/summernote.php"
+            "px-files/fields/multilang_summernote/backend/summernote.php",
+            "px-files/fields/multilang_text/backend/text.php"
         ]
     },
     "extra": {

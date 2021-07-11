@@ -17,7 +17,29 @@
                     },
                     {
                         "modId": "std-document:lists/index",
-                        "fields": {}
+                        "fields": []
+                    },
+                    {
+                        "modId": "std-document:headings/hx-simple",
+                        "fields": {
+                            "hx": {
+                                "src": "2"
+                            },
+                            "main": {
+                                "src": "テストのための見出しです。",
+                                "langs": {
+                                    "en": "Heading for test."
+                                }
+                            },
+                            "sub": {
+                                "src": "これは副見出しです。",
+                                "langs": {
+                                    "en": "This is a sub heading."
+                                }
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
                     },
                     {
                         "modId": "std-document:basics/text",
