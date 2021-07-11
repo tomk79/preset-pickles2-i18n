@@ -31,29 +31,7 @@ class site extends \picklesFramework2\site{
 	/**
 	 * ページ情報を取得する。
 	 *
-	 * このメソッドは、指定したページの情報を連想配列で返します。対象のページは第1引数にパスまたはページIDで指定します。
-	 *
-	 * カレントページの情報を取得する場合は、代わりに `$px->site()->get_current_page_info()` が使用できます。
-	 *
-	 * パスで指定したページの情報を取得する例 :
-	 * <pre>&lt;?php
-	 * // ページ &quot;/aaa/bbb.html&quot; のページ情報を得る
-	 * $page_info = $px-&gt;site()-&gt;get_page_info('/aaa/bbb.html');
-	 * var_dump( $page_info );
-	 * ?&gt;</pre>
-	 *
-	 * ページIDで指定したページの情報を取得する例 :
-	 * <pre>&lt;?php
-	 * // トップページのページ情報を得る
-	 * // (トップページのページIDは必ず空白の文字列)
-	 * $page_info = $px-&gt;site()-&gt;get_page_info('');
-	 * var_dump( $page_info );
-	 * ?&gt;</pre>
-	 *
-	 * 取得対象のページがアクター(role値が設定されている場合にアクターと判定される)だった場合、
-	 * 返却値は一旦ロールページの情報で初期化され、アクター側に値がある項目のみ、アクター側の値で上書きされます。
-	 * ただし、id, path, content, role 列はアクター側の値が、
-	 * logical_path 列はロール側の値が、それぞれ強制的に採用されます。
+	 * 元の `$site` を継承し、言語別のセル値を検索して返す機能を追加します。
 	 *
 	 * @param string $path 取得するページのパス または ページID。
 	 * @param string $key 取り出す単一要素のキー。省略時はすべての要素を含む連想配列が返されます。省略可。
@@ -62,6 +40,62 @@ class site extends \picklesFramework2\site{
 	public function get_page_info( $path, $key = null ){
 		$args = func_get_args();
 		$page_info = call_user_func_array( array('parent', 'get_page_info'), $args );
+
+		if( is_null($page_info) ){
+			// ページが見つからない場合
+			return $page_info;
+		}
+
+		if( count($args) <= 1 && is_array($page_info) ){
+			// $key の指定なしで引いた場合
+			foreach( $page_info as $key=>$val ){
+				$lang_key = $key.'('.$this->px->lang().')';
+				if( array_key_exists($lang_key, $page_info) && strlen($page_info[$lang_key]) ){
+					$page_info[$key] = $page_info[$lang_key];
+					continue;
+				}
+
+				if( isset($page_info['title('.$this->px->lang().')']) && strlen($page_info['title('.$this->px->lang().')']) ){
+					// title派生に関する特別な処理
+					$title_lang = $page_info['title('.$this->px->lang().')'];
+					if( strlen($title_lang) ){
+						switch( $key ){
+							case 'title_h1':
+							case 'title_label':
+							case 'title_breadcrumb':
+							case 'title_full':
+								$page_info[$key] = $title_lang;
+								break;
+						}
+					}
+				}
+			}
+			return $page_info;
+		}
+
+		if( count($args) >= 2 && is_string($page_info) ){
+			// $key を指定して引いた場合
+			$page_info_lang = parent::get_page_info( $path, $key.'('.$this->px->lang().')' );
+			if( strlen($page_info_lang) ){
+				return $page_info_lang;
+			}
+
+			// title派生に関する特別な処理
+			$title_lang = parent::get_page_info( $path, 'title('.$this->px->lang().')' );
+			if( strlen($title_lang) ){
+				switch( $key ){
+					case 'title_h1':
+					case 'title_label':
+					case 'title_breadcrumb':
+					case 'title_full':
+						return $title_lang;
+						break;
+				}
+			}
+
+			return $page_info;
+		}
+
 		return $page_info;
 	}
 }
